@@ -2,17 +2,17 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "MultiNicStorageAccountName": {
-            "value": "multinicdemosa"
+        "multiNicStorageAccountName": {
+            "value": "multinicsaho"
         },
         "adminUserName": {
-            "value": "myAdmin"
+            "value": "haonur"
         },
         "adminPassword": {
-            "value": "MyPassword123!"
+            "value": "Corp123!"
         },
         "publicDnsName": {
-            "value": "multinic-demo"
+            "value": "multinic-haonur"
         }
     }
 }
