@@ -1,7 +1,7 @@
-﻿{
-  "itemDisplayName": "Starter template",
-  "description": "This template creates should be used as a reference on how to pass Github Azure template repo validation",
-  "summary": "This template serves as a validation reference",
-  "githubUsername": "HakOmaN",
-  "dateUpdated": "2015-03-24"
+{
+  "itemDisplayName": "Create a Virtual Network with two Subnets",
+  "description": "This template allows you to create a Virtual Network with two subnets.",
+  "summary": "Create a Virtual Network with two Subnets",
+  "githubUsername": "johngossman",
+  "dateUpdated": "2015-04-04"
 }

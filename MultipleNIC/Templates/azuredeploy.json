@@ -2,19 +2,19 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "MultiNicStorageAccountName": {
+        "multiNicStorageAccountName": {
             "type": "string",
             "metadata": {
                 "description": "Storageaccount name for the deployment - mainly used for VHD storage"
             }
         },
-        "AdminUserName": {
+        "adminUserName": {
             "type": "string",
             "metadata": {
                 "description": "Username for the administrator login to the systems"
             }
         },
-        "AdminPassword": {
+        "adminPassword": {
             "type": "securestring",
             "metadata": {
                 "description": "Password for the administrator login to the systems"
@@ -66,7 +66,7 @@
     },
     "resources": [
         {
-            "name": "[parameters('MultiNicStorageAccountName')]",
+            "name": "[parameters('multiNicStorageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "location": "[resourceGroup().location]",
             "apiVersion": "2015-05-01-preview",
@@ -203,7 +203,7 @@
                 "count": 2
             },
             "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('MultiNicStorageAccountName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('multiNicStorageAccountName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/', 'FirewallNIC0', copyIndex())]",
                 "[concat('Microsoft.Network/networkInterfaces/', 'FirewallNIC1', copyIndex())]",
                 "[concat('Microsoft.Compute/availabilitySets/', 'FWAvailSet')]"
@@ -220,8 +220,8 @@
                 },
                 "osProfile": {
                     "computername": "[concat('FW', copyIndex())]",
-                    "adminUsername": "[parameters('AdminUserName')]",
-                    "adminPassword": "[parameters('AdminPassword')]"
+                    "adminUserName": "[parameters('adminUserName')]",
+                    "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -233,7 +233,7 @@
                     "osDisk": {
                         "name": "FirewallsOSDisk",
                         "vhd": {
-                            "uri": "[concat('http://', parameters('MultiNicStorageAccountName'), '.blob.core.windows.net/', variables('FirewallsStorageAccountContainerName'), '/', variables('FirewallsOSDiskName'), copyIndex(), '.vhd')]"
+                            "uri": "[concat('http://', parameters('multiNicStorageAccountName'), '.blob.core.windows.net/', variables('FirewallsStorageAccountContainerName'), '/', variables('FirewallsOSDiskName'), copyIndex(), '.vhd')]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
@@ -297,7 +297,7 @@
                 "count": 2
             },
             "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('MultiNicStorageAccountName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('multiNicStorageAccountName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/', 'WebNIC', copyIndex())]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'FW0')]"
             ],
@@ -310,8 +310,8 @@
                 },
                 "osProfile": {
                     "computername": "[concat('Web', copyIndex())]",
-                    "adminUsername": "[parameters('AdminUserName')]",
-                    "adminPassword": "[parameters('AdminPassword')]"
+                    "adminUserName": "[parameters('adminUserName')]",
+                    "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -323,7 +323,7 @@
                     "osDisk": {
                         "name": "WebsOSDisk",
                         "vhd": {
-                            "uri": "[concat('http://', parameters('MultiNicStorageAccountName'), '.blob.core.windows.net/', variables('WebsStorageAccountContainerName'), '/', variables('WebsOSDiskName'), copyIndex(), '.vhd')]"
+                            "uri": "[concat('http://', parameters('multiNicStorageAccountName'), '.blob.core.windows.net/', variables('WebsStorageAccountContainerName'), '/', variables('WebsOSDiskName'), copyIndex(), '.vhd')]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"
@@ -384,7 +384,7 @@
             "location": "[resourceGroup().location]",
             "apiVersion": "2015-05-01-preview",
             "dependsOn": [
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('MultiNicStorageAccountName'))]",
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('multiNicStorageAccountName'))]",
                 "[concat('Microsoft.Network/networkInterfaces/', 'OpsNic')]",
                 "[concat('Microsoft.Compute/virtualMachines/', 'FW0')]"
             ],
@@ -397,8 +397,8 @@
                 },
                 "osProfile": {
                     "computername": "OperationsVM",
-                    "adminUsername": "[parameters('AdminUserName')]",
-                    "adminPassword": "[parameters('AdminPassword')]"
+                    "adminUserName": "[parameters('adminUserName')]",
+                    "adminPassword": "[parameters('adminPassword')]"
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -410,7 +410,7 @@
                     "osDisk": {
                         "name": "OperationsOSDisk",
                         "vhd": {
-                            "uri": "[concat('http://', parameters('MultiNicStorageAccountName'), '.blob.core.windows.net/', variables('OperationsStorageAccountContainerName'), '/', variables('OperationsOSDiskName'), '.vhd')]"
+                            "uri": "[concat('http://', parameters('multiNicStorageAccountName'), '.blob.core.windows.net/', variables('OperationsStorageAccountContainerName'), '/', variables('OperationsOSDiskName'), '.vhd')]"
                         },
                         "caching": "ReadWrite",
                         "createOption": "FromImage"

@@ -1,6 +1,3 @@
-﻿# Starter template with validation
+﻿# Multi VM multi NIC template 
 
-This is a starter template that will pass the validation checks. Please read the [contributing guide](https://github.com/Azure/azure-quickstart-templates#contributing-guide) to learn more about what's required for successfully passing validation checks. 
-
-In this example, the template deploys a basic Availability Set resource. This is just a snippet you may want to include in a more complex template.
-
+This template creates 5 VMs - where 2 VMs (FWX) will have 2 network interfaces each and will be in the same availability set, and the other VMs will have 1 NIC each. The template also demonastrates how to ensure VMs are created in order to avoid any issues when utilizing multiple NICs.  

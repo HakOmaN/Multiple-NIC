@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "MultiNicStorageAccountName": {
-            "value": "multinicsaho"
+            "value": "multinicdemosa"
         },
-        "AdminUserName": {
-            "value": "haonur"
+        "adminUserName": {
+            "value": "myAdmin"
         },
-        "AdminPassword": {
-            "value": "Corp123!"
+        "adminPassword": {
+            "value": "MyPassword123!"
         },
         "publicDnsName": {
-            "value": "multinic-haonur"
+            "value": "multinic-demo"
         }
     }
 }
